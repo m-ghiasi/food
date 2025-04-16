@@ -1,0 +1,9 @@
+export default function OnBoarding(){
+return(
+    <div className="bg-yellow-300">
+        hi clients....
+        hi clients....
+        hi clients....
+    </div>
+)
+}
