@@ -1,17 +1,17 @@
-type contentType ={
-    title:string;
-    text:string
-}
+type contentType = {
+  title: string;
+  text: string;
+};
 
 import { useState } from "react";
 import Button from "./button";
 import clsx from "clsx";
-
+import { useSwipeable } from "react-swipeable";
 
 export default function OnBoarding() {
   const [stepOnBd, setStepOnB] = useState<number>(1);
 
-  const content:contentType[]  = [
+  const content: contentType[] = [
     {
       title: "All your favorites",
       text: "Get all your loved foods in one place. You just place the order, we do the rest.",
@@ -30,7 +30,6 @@ export default function OnBoarding() {
     },
   ];
 
-
   const stepLeanth = [1, 2, 3, 4];
 
   const handleStep = () => {
@@ -38,20 +37,34 @@ export default function OnBoarding() {
       setStepOnB(stepOnBd + 1);
     }
     // else  برای صفحه لاگین یا لوکیشن نئشته بشه
-   
-    
   };
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      if (stepOnBd < 4) {
+        setStepOnB(stepOnBd + 1);
+      }
+    },
+    onSwipedRight: () => {
+      if (stepOnBd > 1) {
+        setStepOnB(stepOnBd - 1);
+      }
+    },
+    trackMouse:true,
+  });
 
   return (
-    <div className=" h-screen flex flex-col justify-center items-center p-5">
+    <div className=" h-screen flex flex-col justify-center items-center p-5"
+    {...handlers}>
       {/* content */}
-      <div className="bg-gray-400 rounded-2xl w-60 h-72 p-5 text-4xl text-amber-500">{stepOnBd}</div>
+      <div className="bg-gray-400 rounded-2xl w-60 h-72 p-5 text-4xl text-amber-500">
+        {stepOnBd}
+      </div>
 
       {/* discriptions */}
       <div className="mt-8 flex flex-col items-center">
         <h1 className="text-2xl font-[800]">{content[stepOnBd - 1].title}</h1>
         <p className="text-gray-600 pt-4 text-center ">
-          {content[stepOnBd-1].text}
+          {content[stepOnBd - 1].text}
         </p>
       </div>
 
@@ -60,8 +73,9 @@ export default function OnBoarding() {
         {stepLeanth.map((st) => (
           <div
             key={st}
-            className={clsx("w-[10px] h-[10px] rounded-full bg-[#FFE1CE]", {
+            className={clsx("w-[10px] h-[10px] rounded-full", {
               " bg-[#FF7622]": st === stepOnBd,
+              " bg-[#FFE1CE]": st !== stepOnBd,
             })}
           ></div>
         ))}
