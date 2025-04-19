@@ -7,6 +7,7 @@ import { useState } from "react";
 import Button from "./button";
 import clsx from "clsx";
 import { useSwipeable } from "react-swipeable";
+import AccessLocation from "./location";
 
 export default function OnBoarding() {
   const [stepOnBd, setStepOnB] = useState<number>(1);
@@ -37,6 +38,9 @@ export default function OnBoarding() {
       setStepOnB(stepOnBd + 1);
     }
     // else  برای صفحه لاگین یا لوکیشن نئشته بشه
+    else{
+        <AccessLocation/>
+    }
   };
   const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -85,12 +89,14 @@ export default function OnBoarding() {
       <div className="flex flex-col gap-4 mt-14">
         <Button
           onClick={handleStep}
-          label="NEXT"
+          label={stepOnBd === 4 ? "GET SARTED" : "Next"}
           className={clsx(
             "text-white bg-[#FF7622] w-[327px] py-5 rounded-2xl "
           )}
         />
-        <Button label="Skip" className={clsx("text-gray-600 bg-white")} />
+        <Button label="Skip" className={clsx("text-gray-600 bg-white",
+            {"hidden`" :stepOnBd===4  }
+        )} />
       </div>
     </div>
   );

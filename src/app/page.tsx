@@ -31,10 +31,10 @@ export default function AppEntry() {
 
   if (step === "splash") return <SplashScreen/>
   if(step === "onBoarding") return <OnBoarding
-  goNext= {() => {
-    localStorage.setItem("hasScreenOnBoarding", "true");
-    setStep("login")
-  }}
+  // goNext= {() => {
+  //   localStorage.setItem("hasScreenOnBoarding", "true");
+  //   setStep("login")
+  // }}
   
   />
   
