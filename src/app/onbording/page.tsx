@@ -1,10 +1,11 @@
+"use client";
 type contentType = {
   title: string;
   text: string;
 };
 
 import { useState } from "react";
-import Button from "./button";
+import Button from "../components/button";
 import clsx from "clsx";
 import { useSwipeable } from "react-swipeable";
 import { useRouter } from "next/router";

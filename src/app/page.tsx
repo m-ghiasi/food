@@ -1,10 +1,10 @@
 
 "use client"
-import Login from "../components/login";
-import SplashScreen from "../components/splashScreen";
+import Login from "./components/login";
+import SplashScreen from "./components/splashScreen";
 
 import { useEffect, useState } from "react";
-import OnBoarding from "@/components/onBoarding";
+import OnBoarding from "@/app/onbording/page";
 
 
 export default function AppEntry() {
