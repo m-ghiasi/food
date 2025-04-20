@@ -4,11 +4,12 @@ type BtnType = {
   onClick ?: () => void;
 };
 
-export default function Button(props: BtnType) {
-  const { label, className = "", onClick } = props;
+
+export default function Button(pro: BtnType) {
+  const { label, className = "", onClick ,  ...props } = pro;
 
   return (
-    <button className={`${className}"text-white bg-[#FF7622] w-[327px] py-5 rounded-2xl " `} onClick={onClick}>
+    <button className={`${className}"text-white  w-[327px] py-5 rounded-2xl " `}  onClick={onClick} {...props}>
       {label}
     </button>
   );

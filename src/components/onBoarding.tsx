@@ -7,11 +7,11 @@ import { useState } from "react";
 import Button from "./button";
 import clsx from "clsx";
 import { useSwipeable } from "react-swipeable";
-import AccessLocation from "./location";
+import { useRouter } from "next/router";
+// import LocationMap from "./location";
+// import AccessLocation from "./location";
 
 export default function OnBoarding() {
-  const [stepOnBd, setStepOnB] = useState<number>(1);
-
   const content: contentType[] = [
     {
       title: "All your favorites",
@@ -30,18 +30,21 @@ export default function OnBoarding() {
       text: "Login or sign up to start your food journey.",
     },
   ];
-
+  const [stepOnBd, setStepOnB] = useState<number>(1);
   const stepLeanth = [1, 2, 3, 4];
 
   const handleStep = () => {
     if (stepOnBd < 4) {
       setStepOnB(stepOnBd + 1);
+      console.log("stepOnBd", stepOnBd);
     }
-    // else  برای صفحه لاگین یا لوکیشن نئشته بشه
-    else{
-        <AccessLocation/>
-    }
+    
   };
+  const router = useRouter();
+
+  const handleLocation = ()=>{
+    router.push("/location")
+  }
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       if (stepOnBd < 4) {
@@ -53,12 +56,14 @@ export default function OnBoarding() {
         setStepOnB(stepOnBd - 1);
       }
     },
-    trackMouse:true,
+    trackMouse: true,
   });
 
   return (
-    <div className=" h-screen flex flex-col justify-center items-center p-5"
-    {...handlers}>
+    <div
+      className=" h-screen flex flex-col justify-center items-center p-5"
+      {...handlers}
+    >
       {/* content */}
       <div className="bg-gray-400 rounded-2xl w-60 h-72 p-5 text-4xl text-amber-500">
         {stepOnBd}
@@ -87,16 +92,31 @@ export default function OnBoarding() {
 
       {/* buttons */}
       <div className="flex flex-col gap-4 mt-14">
-        <Button
-          onClick={handleStep}
-          label={stepOnBd === 4 ? "GET SARTED" : "Next"}
-          className={clsx(
-            "text-white bg-[#FF7622] w-[327px] py-5 rounded-2xl "
-          )}
-        />
-        <Button label="Skip" className={clsx("text-gray-600 bg-white",
-            {"hidden`" :stepOnBd===4  }
-        )} />
+        {stepOnBd < 4 && (
+          <div>
+            <Button
+              onClick={handleStep}
+              label="Next"
+              className={clsx(
+                "text-white bg-[#FF7622] w-[327px] py-5 rounded-2xl block "
+              )}
+            />
+            <Button
+              label="Skip"
+              className={clsx("text-gray-600 bg-white block")}
+            />
+          </div>
+        )}
+
+        {stepOnBd === 4 && (
+          <Button
+            label="GET START"
+            className={clsx("text-white  bg-[#FF7622] ")}
+            onClick={handleLocation}
+          />
+        )}
+
+        
       </div>
     </div>
   );
