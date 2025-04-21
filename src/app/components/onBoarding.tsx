@@ -3,6 +3,9 @@ type contentType = {
   title: string;
   text: string;
 };
+type OnBoardingProps = {
+  goNext: () => void;
+};
 
 import { useState } from "react";
 import Button from "./button";
@@ -44,6 +47,8 @@ export default function OnBoarding() {
   const router = useRouter();
 
   const handleLocation = ()=>{
+    localStorage.setItem("hasScreenOnBoarding", "true");
+
     router.push("/location")
   }
   const handlers = useSwipeable({
