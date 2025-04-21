@@ -4,7 +4,7 @@ import Login from "./components/login";
 import SplashScreen from "./components/splashScreen";
 
 import { useEffect, useState } from "react";
-import OnBoarding from "@/app/onbording/page";
+import OnBoarding from "@/app/components/onBoarding";
 
 
 export default function AppEntry() {
