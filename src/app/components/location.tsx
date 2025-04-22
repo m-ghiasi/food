@@ -3,6 +3,9 @@
 import { useState } from "react";
 import Button from "./button";
 import { IoLocationOutline } from "react-icons/io5";
+import { FaArrowRight } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+
 
 type Coordinates = {
   lat: number;
@@ -11,7 +14,10 @@ type Coordinates = {
 
 export default function LocationMap() {
   const [coords, setCoords] = useState<Coordinates | null>(null);
-
+const router = useRouter();
+  const handleLogin = () => {
+    router.push("/login")
+  };
   const showLocation = () => {
     if (!navigator.geolocation) {
       alert("Geolocation is not supported by your browser");
@@ -67,6 +73,9 @@ export default function LocationMap() {
       <p className="mt-10 text-center text-sm text-gray-600 px-4">
         DFOOD WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP
       </p>
+      <Button className="w-10 h-10 text-orange-600" onClick={handleLogin}>
+        <FaArrowRight className="text-red-600" />
+      </Button>
     </div>
   );
 }
