@@ -22,7 +22,7 @@ export default function AppEntry() {
       } else {
         setStep("onBoarding")
       }
-    },3000)
+    },5000)
 
     return()=> clearTimeout(splashTimer)
 
