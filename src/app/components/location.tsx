@@ -12,7 +12,6 @@ type Coordinates = {
 export default function LocationMap() {
   const [coords, setCoords] = useState<Coordinates | null>(null);
 
- 
   const showLocation = () => {
     if (!navigator.geolocation) {
       alert("Geolocation is not supported by your browser");
@@ -26,7 +25,7 @@ export default function LocationMap() {
           lng: position.coords.longitude,
         };
         setCoords(newCoords);
-        console.log(newCoords); 
+        console.log(newCoords);
       },
       () => {
         alert("Unable to retrieve your location");
@@ -35,8 +34,8 @@ export default function LocationMap() {
   };
 
   return (
-    <div className="h-screen w-[100%]  min-h-screen rounded-2xl  max-w-[390px] flex flex-col items-center justify-center ">
-      <div className=" bg-gray-400 rounded-[30%] w-50 h-60 mb-20">
+    <div className="h-screen w-full max-w-[390px] flex flex-col items-center justify-center px-4">
+      <div className="bg-gray-400 rounded-2xl w-full h-60 mb-6 overflow-hidden">
         {coords ? (
           <iframe
             width="100%"
@@ -54,17 +53,18 @@ export default function LocationMap() {
           </div>
         )}
       </div>
+
       <Button
-        className="bg-[#FF7622] text-white flex flex-row justify-center items-center "
+        className="bg-[#FF7622] text-white flex flex-row justify-center items-center"
         onClick={showLocation}
       >
-        {"ACCESS LOCATION "}
-        <span className="bg-[#e2a47e] rounded-4xl w-8 h-8 mx-5 flex justify-center items-center ">
+        ACCESS LOCATION
+        <span className="bg-[#e2a47e] rounded-full w-8 h-8 mx-3 flex justify-center items-center">
           <IoLocationOutline />
         </span>
       </Button>
 
-      <p className="mt-10 text-center">
+      <p className="mt-10 text-center text-sm text-gray-600 px-4">
         DFOOD WILL ACCESS YOUR LOCATION ONLY WHILE USING THE APP
       </p>
     </div>
