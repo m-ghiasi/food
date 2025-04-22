@@ -18,10 +18,11 @@ export default function AppEntry() {
     const splashTimer = setTimeout(()=>{
       if(!hasScreenOnBoarding) {
         setStep("onBoarding")
+        
       } else {
-        setStep("login")
+        setStep("onBoarding")
       }
-    },5000)
+    },3000)
 
     return()=> clearTimeout(splashTimer)
 
@@ -30,13 +31,7 @@ export default function AppEntry() {
   },[])
 
   if (step === "splash") return <SplashScreen/>
-  if(step === "onBoarding") return <OnBoarding
-  // goNext= {() => {
-  //   localStorage.setItem("hasScreenOnBoarding", "true");
-  //   setStep("login")
-  // }}
-  
-  />
+  if(step === "onBoarding") return <OnBoarding/>
   
 
 
