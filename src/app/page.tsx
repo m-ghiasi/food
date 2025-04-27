@@ -1,47 +1,37 @@
+"use client";
 
-"use client"
-import Login from "../components/login";
 import SplashScreen from "../components/splashScreen";
 
 import { useEffect, useState } from "react";
 import OnBoarding from "../components/onBoarding";
-
+import { useRouter } from "next/navigation";
 
 export default function AppEntry() {
+  const router = useRouter();
 
+  const [step, setStep] = useState<"splash" | "onBoarding" | "login">("splash");
 
-  const [step , setStep]= useState<"splash" | "onBoarding" | "login">("splash")
-
-
-  useEffect(()=> {
+  useEffect(() => {
     const hasScreenOnBoarding = localStorage.getItem("hasScreenOnBoarding");
-    const splashTimer = setTimeout(()=>{
-      if(!hasScreenOnBoarding) {
-        setStep("onBoarding")
-        
+    const splashTimer = setTimeout(() => {
+      if (!hasScreenOnBoarding) {
+        setStep("onBoarding");
       } else {
-        setStep("login")
+        setStep("login");
       }
-    },5000)
+    }, 5000);
 
-    return()=> clearTimeout(splashTimer)
+    return () => clearTimeout(splashTimer);
+  }, []);
 
-    
-    
-  },[])
+  useEffect(() => {
+    if(step === "login") {
+      router.push("/login")
+    }
+  },[step, router])
 
-  if (step === "splash") return <SplashScreen/>
-  if(step === "onBoarding") return <OnBoarding/>
+  if (step === "splash") return <SplashScreen />;
+  if (step === "onBoarding") return <OnBoarding />;
   
-
-
-  return (
-    <div className="relative bg-gray-200 w-full min-h-screen rounded-2xl  max-w-[390px]">
-      <Login label="login"/>
-
-  
-
-      
-    </div>
-  );
+  return null;
 }
