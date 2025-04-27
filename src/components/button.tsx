@@ -4,7 +4,7 @@ type BtnType = {
   label ?: any;
   className ?: string;
   onClick ?: () => void;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 

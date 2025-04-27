@@ -1,9 +1,9 @@
 'use client '
 import Image from "next/image"
 import { useEffect, useState } from "react";
-import Logo from "../../../public/Logo.svg";
-import Elipse from "../../../public/Ellipse 1006.svg";
-import Elipseg from "../../../public/Ellipse 1005.svg";
+import Logo from "../../public/Logo.svg";
+import Elipse from "../../public/Ellipse 1006.svg";
+import Elipseg from "../../public/Ellipse 1005.svg";
 
 export default function SplashScreen(){
     const [isActive, setIsActive]= useState<boolean>(false);

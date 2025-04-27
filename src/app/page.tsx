@@ -20,7 +20,7 @@ export default function AppEntry() {
         setStep("onBoarding")
         
       } else {
-        setStep("onBoarding")
+        setStep("login")
       }
     },5000)
 

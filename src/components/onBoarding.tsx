@@ -3,16 +3,14 @@ type contentType = {
   title: string;
   text: string;
 };
-// type OnBoardingProps = {
-//   goNext: () => void;
-// };
+
 
 import { useState } from "react";
 import Button from "./button";
 import clsx from "clsx";
 import { useSwipeable } from "react-swipeable";
 import { useRouter } from "next/navigation";
-// import LocationMap from "./location";
+
 
 
 export default function OnBoarding() {
