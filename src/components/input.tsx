@@ -1,7 +1,7 @@
 type inputType = {
-  id: string;
+  id?: string;
   type: string;
-  lable: string;
+  lable?: string;
   wrapperClassName?: string;
   inputClassName?: string;
   lableClassName?: string;

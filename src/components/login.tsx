@@ -10,7 +10,7 @@ export default function Login() {
         type="text"
         placeholder="example@gmail.com"
         wrapperClassName="flex-col "
-        inputClassName="w-80 h-16"
+        inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
         lableClassName="mb-2"
       />
       <Input
@@ -18,7 +18,7 @@ export default function Login() {
         lable="PASSWORD"
         type="password"
         wrapperClassName=" flex-col"
-        inputClassName="w-80 h-16"
+        inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
         lableClassName="mb-2"
       />
       <div className="flex w-full justify-evenly ">
@@ -32,7 +32,7 @@ export default function Login() {
         />
         <span className="text-[#FF7622] text-[14px]">FORGET PASSWORD</span>
       </div>
-      <Button label={"LOGIN"} className="bg-[#FF7622]" />
+      <Button label={"LOG IN"} className=" text-white font-bold bg-[#FF7622]" />
       <p className="text-center flex flex-row gap-3 text-[#646982]">
         Don’t have an account?<span className="text-[#FF7622] font-bold">SIGN UP</span>
       </p>
