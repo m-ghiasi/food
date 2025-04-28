@@ -1,7 +1,6 @@
 "use client";
 
-import Button from "@/components/button";
-import Input from "@/components/input";
+
 import Login from "@/components/login";
 import Image from "next/image";
 import BackImage from "../../../public/Vector 142.svg";
