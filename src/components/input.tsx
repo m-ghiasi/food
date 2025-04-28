@@ -20,7 +20,7 @@ export default function Input(pro: inputType) {
   } = pro;
   return (
     <div className={`${wrapperClassName} flex `}>
-      <label className={`${lableClassName}my-2 text-[13px]`} htmlFor={id}>
+      <label className={`${lableClassName} text-[13px]`} htmlFor={id}>
         {lable}
       </label>
       <input
