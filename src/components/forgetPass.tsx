@@ -1,9 +1,13 @@
 import Button from "./button";
 import Input from "./input";
+import Wrapper from "./wrapper";
+type LoginProps = {
+    setLoginStep: React.Dispatch<React.SetStateAction<"login" | "forgetPass" | "signUp" | "verification">>;
+  };
 
-export default function ForgetPass(){
+export default function ForgetPass({ setLoginStep }: LoginProps){
     return(
-        <div>
+        <Wrapper>
            <Input
                    id="email"
                    lable="EMAIL"
@@ -14,7 +18,9 @@ export default function ForgetPass(){
                    lableClassName="mb-2"
                  />
                  
-                 <Button label={"SEND CODE"} className=" text-white font-bold bg-[#FF7622]" />
-        </div>
+                 <Button label={"SEND CODE"} className=" text-white font-bold bg-[#FF7622] w-[327px]" onClick={()=>{
+                    setLoginStep("verification")
+                 }} />
+        </Wrapper>
     )
 }

@@ -1,22 +1,34 @@
+import { useRouter } from "next/navigation";
 import Button from "./button";
 import Input from "./input";
+import Wrapper from "./wrapper";
 
 export default function Veriifiction() {
+  const router = useRouter();
+  const handelVeriify = () => {
+    router.push("/homePage");
+  };
+
   return (
-    <div className="w-full">
-      <div className="w-full flex justify-between">
+    <Wrapper>
+      <div className="w-full flex justify-between items-center">
         <span>CODE</span>
-        <div className="flex">
-          <Button className="text-black underline font-bold" label={"Resend"} />{" "}
+        <div className="flex items-center">
+          <Button className="text-black underline font-bold" label={"Resend"} />
           <span>in.50sec</span>
         </div>
       </div>
-      <div className="flex justify-evenly">
-        <Input type="number" inputClassName="w-[62px] h-[62px]"/>
-        <Input type="number" inputClassName="w-[62px] h-[62px]"/>
-        <Input type="number" inputClassName="w-[62px] h-[62px]"/>
-        <Input type="number" inputClassName="w-[62px] h-[62px]"/>
+      <div className="flex w-full justify-evenly">
+        <Input type="number" inputClassName="w-[62px] h-[62px] appearance-none" />
+        <Input type="number" inputClassName="w-[62px] h-[62px] appearance-none" />
+        <Input type="number" inputClassName="w-[62px] h-[62px] appearance-none" />
+        <Input type="number" inputClassName="w-[62px] h-[62px] appearance-none" />
       </div>
-    </div>
+      <Button
+        className=" text-white font-bold bg-[#FF7622] w-[327px]"
+        label={"VERIFY"}
+        onClick={handelVeriify}
+      ></Button>
+    </Wrapper>
   );
 }

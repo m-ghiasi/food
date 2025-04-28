@@ -1,9 +1,10 @@
 import Input from "./input";
 import Button from "./button";
+import Wrapper from "./wrapper";
 
 export default function SignUp() {
   return (
-    <div className=" bg-white rounded-4xl py-10 items-center flex flex-col gap-6 h-[580px]">
+    <Wrapper>
       <Input
         id="name"
         lable="NAME"
@@ -39,8 +40,8 @@ export default function SignUp() {
         lableClassName="mb-2"
       />
       
-      <Button label={"SIGN UP"} className=" text-white font-bold bg-[#FF7622]" />
+      <Button label={"SIGN UP"} className=" text-white font-bold bg-[#FF7622] w-[327px]" />
       
-    </div>
+    </Wrapper>
   );
 }
