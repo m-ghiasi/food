@@ -26,23 +26,26 @@ export default function Page() {
   const [loginStep, setLoginStep] = useState<
     "login" | "forgetPass" | "signUp" | "verification"
   >("login");
-const handleback= ()=>{
-  {loginStep==="forgetPass" &&
-    setLoginStep("login"),
-     loginStep ==="signUp" &&
-     setLoginStep("login"),
-     loginStep==="verification" &&
-     setLoginStep("forgetPass")
-  }
 
-}
+
+  const handleback = () => {
+    if (loginStep === "forgetPass" || loginStep === "signUp") {
+      setLoginStep("login");
+    } else if (loginStep === "verification") {
+      setLoginStep("forgetPass");
+    }
+  };
+  
+
+
   return (
     <div className="flex flex-col  w-96 h-screen rounded-4xl  bg-[#121223] reletive">
       {loginStep !== "login" && (
         <BackItem
-         className="z-10 absolute top-15 left-10 
+          className="z-10 absolute top-15 left-10 
          "
-         onClick={handleback} />
+          onClick={handleback}
+        />
       )}
       <div className="relative ">
         <Image
