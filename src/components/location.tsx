@@ -6,7 +6,6 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
-
 type Coordinates = {
   lat: number;
   lng: number;
@@ -14,10 +13,12 @@ type Coordinates = {
 
 export default function LocationMap() {
   const [coords, setCoords] = useState<Coordinates | null>(null);
-const router = useRouter();
+  const router = useRouter();
+
   const handleLogin = () => {
-    router.push("/login")
+    router.push("/authentication");
   };
+
   const showLocation = () => {
     if (!navigator.geolocation) {
       alert("Geolocation is not supported by your browser");
@@ -61,7 +62,7 @@ const router = useRouter();
       </div>
 
       <Button
-        className="bg-[#FF7622] text-white flex flex-row justify-center items-center"
+        className="bg-[#FF7622] text-white flex flex-row justify-center items-center w-[327px]"
         onClick={showLocation}
       >
         ACCESS LOCATION

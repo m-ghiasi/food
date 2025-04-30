@@ -4,14 +4,11 @@ type contentType = {
   text: string;
 };
 
-
 import { useState } from "react";
 import Button from "./button";
 import clsx from "clsx";
 import { useSwipeable } from "react-swipeable";
 import { useRouter } from "next/navigation";
-
-
 
 export default function OnBoarding() {
   const content: contentType[] = [
@@ -40,15 +37,14 @@ export default function OnBoarding() {
       setStepOnB(stepOnBd + 1);
       console.log("stepOnBd", stepOnBd);
     }
-    
   };
   const router = useRouter();
 
-  const handleLocation = ()=>{
+  const handleLocation = () => {
     localStorage.setItem("hasScreenOnBoarding", "true");
 
-    router.push("/location")
-  }
+    router.push("/location");
+  };
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       if (stepOnBd < 4) {
@@ -107,7 +103,7 @@ export default function OnBoarding() {
             />
             <Button
               label="Skip"
-              className={clsx("text-gray-600 bg-white block")}
+              className={clsx("text-gray-600 bg-white block w-[327px]")}
             />
           </div>
         )}
@@ -115,12 +111,10 @@ export default function OnBoarding() {
         {stepOnBd === 4 && (
           <Button
             label="GET START"
-            className={clsx("text-white  bg-[#FF7622] ")}
+            className={clsx("text-white  bg-[#FF7622] w-[327px] ")}
             onClick={handleLocation}
           />
         )}
-
-        
       </div>
     </div>
   );
