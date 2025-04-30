@@ -2,8 +2,7 @@ import Input from "./input";
 import Button from "./button";
 import { useRouter } from "next/navigation";
 import Wrapper from "./wrapper";
-import Image from "next/image";
-import eyePass from "../../public/eyePass.svg"
+
 
 type LoginProps = {
   setLoginStep: React.Dispatch<

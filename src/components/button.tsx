@@ -1,7 +1,7 @@
 import {  ReactNode } from "react";
 
 type BtnType = {
-  label ?: any;
+  label?: string | number | ReactNode;
   className ?: string;
   onClick ?: () => void;
   children?: ReactNode;

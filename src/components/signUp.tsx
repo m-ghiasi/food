@@ -2,7 +2,7 @@ import Input from "./input";
 import Button from "./button";
 import Wrapper from "./wrapper";
 import { useRouter } from "next/navigation";
-import { ReactElement } from "react";
+
 
 export default function SignUp() {
   const router = useRouter();
