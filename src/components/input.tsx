@@ -6,7 +6,8 @@ type inputType = {
   inputClassName?: string;
   lableClassName?: string;
   placeholder?: string;
-//   labelPosition
+
+  //   labelPosition
 };
 export default function Input(pro: inputType) {
   const {
@@ -17,6 +18,7 @@ export default function Input(pro: inputType) {
     inputClassName,
     placeholder,
     lableClassName,
+    
   } = pro;
   return (
     <div className={`${wrapperClassName} flex `}>
@@ -28,7 +30,9 @@ export default function Input(pro: inputType) {
         placeholder={placeholder}
         id={id}
         type={type}
-      />
+      >
+        
+      </input>
     </div>
   );
 }

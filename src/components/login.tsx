@@ -2,6 +2,9 @@ import Input from "./input";
 import Button from "./button";
 import { useRouter } from "next/navigation";
 import Wrapper from "./wrapper";
+import Image from "next/image";
+import eyePass from "../../public/eyePass.svg"
+
 type LoginProps = {
   setLoginStep: React.Dispatch<
     React.SetStateAction<"login" | "forgetPass" | "signUp" | "verification">
@@ -13,8 +16,14 @@ export default function Login({ setLoginStep }: LoginProps) {
   const handleLogin = () => {
     router.push("/homePage");
   };
+
+  const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    handleLogin()
+  }
   return (
     <Wrapper>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6 items-center">
       <Input
         id="email"
         lable="EMAIL"
@@ -27,9 +36,10 @@ export default function Login({ setLoginStep }: LoginProps) {
       <Input
         id="password"
         lable="PASSWORD"
+        
         type="password"
         wrapperClassName=" flex-col"
-        inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
+        inputClassName={`w-80 h-16 placeholder:${<Image src={eyePass} alt="change password to text and number icon"/>} ` }
         lableClassName="mb-2"
       />
       <div className="flex w-full justify-evenly items-center ">
@@ -42,6 +52,7 @@ export default function Login({ setLoginStep }: LoginProps) {
           lableClassName="order-2 text-[#646982]"
         />
         <Button
+        type="button"
           label={"FORGET PASSWORD"}
           className="text-[#FF7622] text-[14px] "
           onClick={() => {
@@ -50,6 +61,7 @@ export default function Login({ setLoginStep }: LoginProps) {
         ></Button>
       </div>
       <Button
+      type= "submit"
         label={"LOG IN"}
         className=" text-white font-bold bg-[#FF7622] w-[327px]"
         onClick={handleLogin}
@@ -59,6 +71,7 @@ export default function Login({ setLoginStep }: LoginProps) {
           Don’t have an account?
         </p>
         <Button
+        type="button"
           onClick={() => {
             setLoginStep("signUp");
           }}
@@ -66,6 +79,7 @@ export default function Login({ setLoginStep }: LoginProps) {
           className="text-[#FF7622] font-bold "
         ></Button>
       </div>
+      </form>
     </Wrapper>
   );
 }
