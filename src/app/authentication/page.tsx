@@ -1,6 +1,5 @@
 "use client";
 
-
 import Login from "@/components/login";
 import Image from "next/image";
 import BackImage from "../../../public/Vector 142.svg";
@@ -9,15 +8,15 @@ import { useState } from "react";
 import ForgetPass from "@/components/forgetPass";
 import SignUp from "@/components/signUp";
 import Veriifiction from "@/components/verification";
-type pageTitlTeype= {
-  login:string;
-  forgetPass:string;
-  verification:string;
-  signUp:string;
-
-}
+import BackItem from "@/components/arrBtn";
+type pageTitlTeype = {
+  login: string;
+  forgetPass: string;
+  verification: string;
+  signUp: string;
+};
 export default function Page() {
-  const pageTitle:pageTitlTeype = {
+  const pageTitle: pageTitlTeype = {
     login: "Log In",
     forgetPass: "Forget Password",
     verification: "Verification",
@@ -27,9 +26,24 @@ export default function Page() {
   const [loginStep, setLoginStep] = useState<
     "login" | "forgetPass" | "signUp" | "verification"
   >("login");
+const handleback= ()=>{
+  {loginStep==="forgetPass" &&
+    setLoginStep("login"),
+     loginStep ==="signUp" &&
+     setLoginStep("login"),
+     loginStep==="verification" &&
+     setLoginStep("forgetPass")
+  }
 
+}
   return (
-    <div className="flex flex-col  w-96 h-screen rounded-4xl  bg-[#121223] ">
+    <div className="flex flex-col  w-96 h-screen rounded-4xl  bg-[#121223] reletive">
+      {loginStep !== "login" && (
+        <BackItem
+         className="z-10 absolute top-15 left-10 
+         "
+         onClick={handleback} />
+      )}
       <div className="relative ">
         <Image
           className=" w-40 h-40 absolute top-0 left-0 "
@@ -45,7 +59,6 @@ export default function Page() {
       <div className=" flex flex-col items-center mt-45 mb-12">
         <h2 className="text-white font-bold text-3xl">
           {pageTitle[loginStep]}
-          
         </h2>
         <p className="text-white text-[16px]">
           Please sign in to your existing account
@@ -53,9 +66,11 @@ export default function Page() {
       </div>
 
       <div className="h-full  rounded-2xl">
-        {loginStep === "login" && <Login setLoginStep={setLoginStep}  />}
-        {loginStep === "forgetPass" && <ForgetPass setLoginStep={setLoginStep} />}
-        {loginStep === "signUp" && <SignUp  />}
+        {loginStep === "login" && <Login setLoginStep={setLoginStep} />}
+        {loginStep === "forgetPass" && (
+          <ForgetPass setLoginStep={setLoginStep} />
+        )}
+        {loginStep === "signUp" && <SignUp />}
         {loginStep === "verification" && <Veriifiction />}
       </div>
     </div>
