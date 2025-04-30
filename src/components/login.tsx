@@ -36,10 +36,11 @@ export default function Login({ setLoginStep }: LoginProps) {
       <Input
         id="password"
         lable="PASSWORD"
+        placeholder="your password"
         
         type="password"
         wrapperClassName=" flex-col"
-        inputClassName={`w-80 h-16 placeholder:${<Image src={eyePass} alt="change password to text and number icon"/>} ` }
+        inputClassName={`w-80 h-16 placeholder:text-[#A0A5BA] ` }
         lableClassName="mb-2"
       />
       <div className="flex w-full justify-evenly items-center ">

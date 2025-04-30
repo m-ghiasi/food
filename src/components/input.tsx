@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 type inputType = {
   id?: string;
   type: string;
@@ -6,8 +8,6 @@ type inputType = {
   inputClassName?: string;
   lableClassName?: string;
   placeholder?: string;
-
-  //   labelPosition
 };
 export default function Input(pro: inputType) {
   const {
@@ -18,21 +18,34 @@ export default function Input(pro: inputType) {
     inputClassName,
     placeholder,
     lableClassName,
-    
   } = pro;
+
+  const [showPass, setShowPass] = useState<boolean>(false);
+  const isPassword = type === "password";
   return (
-    <div className={`${wrapperClassName} flex `}>
+    <div className={`${wrapperClassName} relative flex `}>
       <label className={`${lableClassName} text-[13px]`} htmlFor={id}>
         {lable}
       </label>
       <input
-        className={`${inputClassName}  rounded-2xl bg-[#F0F5FA] px-5 `}
+        className={`${inputClassName} flex items-center pr-12  rounded-2xl bg-[#F0F5FA] px-5 `}
         placeholder={placeholder}
         id={id}
-        type={type}
-      >
-        
-      </input>
+        type={isPassword && showPass ? "text" : type}
+      />
+
+      {isPassword && (
+        <span
+          className="absolute  right-4 top-12 cursor-pointer text-gray-500"
+          onClick={() => setShowPass((prev) => !prev)}
+        >
+          {showPass ? (
+            <AiOutlineEyeInvisible size={20} />
+          ) : (
+            <AiOutlineEye size={20} />
+          )}
+        </span>
+      )}
     </div>
   );
 }
