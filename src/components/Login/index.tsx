@@ -55,7 +55,7 @@ export default function Login({ setLoginStep }: LoginProps) {
           <Button
             type="button"
             label={"FORGET PASSWORD"}
-            className="text-[#FF7622] text-[14px] "
+            className="text-[#FF7622] text-[14px]  cursor-pointer "
             onClick={() => {
               setLoginStep("forgetPass");
             }}
@@ -75,7 +75,7 @@ export default function Login({ setLoginStep }: LoginProps) {
               setLoginStep("signUp");
             }}
             label={"SIGN UP"}
-            className="text-[#FF7622] font-bold "
+            className="text-[#FF7622] font-bold  cursor-pointer "
           ></Button>
         </div>
       </form>

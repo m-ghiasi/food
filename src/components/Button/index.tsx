@@ -13,7 +13,7 @@ export default function Button(pro: BtnType) {
 
   return (
     <button
-      className={`${className}  py-5 rounded-2xl  `}
+      className={`${className} cursor-pointer py-5 rounded-2xl  `}
       type={type}
       onClick={onClick}
       {...props}
