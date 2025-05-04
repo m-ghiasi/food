@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
-import Button from "./button";
-import Input from "./input";
-import Wrapper from "./wrapper";
+import Button from "../Button";
+import Input from "../Input";
+import Wrapper from "../Wrapper";
 
 export default function Veriifiction() {
   const router = useRouter();

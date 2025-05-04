@@ -1,6 +1,6 @@
-import Input from "./input";
-import Button from "./button";
-import Wrapper from "./wrapper";
+import Input from "../Input";
+import Button from "../Button";
+import Wrapper from "../Wrapper";
 import { useRouter } from "next/navigation";
 
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Button from "./button";
+import Button from "../Button";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";

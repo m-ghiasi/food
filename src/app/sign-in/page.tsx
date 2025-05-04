@@ -1,14 +1,14 @@
 "use client";
 
-import Login from "@/components/login";
+import Login from "@/components/Login";
 import Image from "next/image";
 import BackImage from "../../../public/Vector 142.svg";
 import Eli from "../../../public/Ellipse 100.svg";
 import { useState } from "react";
-import ForgetPass from "@/components/forgetPass";
-import SignUp from "@/components/signUp";
-import Veriifiction from "@/components/verification";
-import BackItem from "@/components/arrBtn";
+import ForgetPass from "@/components/ForgetPass";
+import SignUp from "@/components/SignUp";
+import Veriifiction from "@/components/Verification";
+import BackItem from "@/components/ArrBtn";
 type pageTitlTeype = {
   login: string;
   forgetPass: string;

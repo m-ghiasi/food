@@ -1,7 +1,7 @@
-import Input from "./input";
-import Button from "./button";
+import Input from "../Input";
+import Button from "../Button";
 import { useRouter } from "next/navigation";
-import Wrapper from "./wrapper";
+import Wrapper from "../Wrapper";
 
 
 type LoginProps = {

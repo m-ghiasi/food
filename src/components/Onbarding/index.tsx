@@ -5,7 +5,7 @@ type contentType = {
 };
 
 import { useState } from "react";
-import Button from "./button";
+import Button from "../Button";
 import clsx from "clsx";
 import { useSwipeable } from "react-swipeable";
 import { useRouter } from "next/navigation";

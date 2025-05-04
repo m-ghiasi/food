@@ -1,6 +1,6 @@
-import Button from "./button";
-import Input from "./input";
-import Wrapper from "./wrapper";
+import Button from "../Button";
+import Input from "../Input";
+import Wrapper from "../Wrapper";
 type LoginProps = {
     setLoginStep: React.Dispatch<React.SetStateAction<"login" | "forgetPass" | "signUp" | "verification">>;
   };

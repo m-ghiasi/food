@@ -1,9 +1,9 @@
 "use client";
 
-import SplashScreen from "../components/splashScreen";
+import SplashScreen from "../components/SplashScreen";
 
 import { useEffect, useState } from "react";
-import OnBoarding from "../components/onBoarding";
+import OnBoarding from "../components/Onbarding";
 import { useRouter } from "next/navigation";
 
 export default function AppEntry() {
