@@ -19,10 +19,22 @@ export default function Veriifiction() {
         </div>
       </div>
       <div className="flex w-full justify-evenly">
-        <Input type="number" inputClassName="w-[62px] h-[62px] appearance-none" />
-        <Input type="number" inputClassName="w-[62px] h-[62px] appearance-none" />
-        <Input type="number" inputClassName="w-[62px] h-[62px] appearance-none" />
-        <Input type="number" inputClassName="w-[62px] h-[62px] appearance-none" />
+        <Input
+          type="number"
+          inputClassName="w-[62px] h-[62px] appearance-none"
+        />
+        <Input
+          type="number"
+          inputClassName="w-[62px] h-[62px] appearance-none"
+        />
+        <Input
+          type="number"
+          inputClassName="w-[62px] h-[62px] appearance-none"
+        />
+        <Input
+          type="number"
+          inputClassName="w-[62px] h-[62px] appearance-none"
+        />
       </div>
       <Button
         className=" text-white font-bold bg-[#FF7622] w-[327px]"

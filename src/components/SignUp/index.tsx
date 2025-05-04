@@ -3,7 +3,6 @@ import Button from "../Button";
 import Wrapper from "../Wrapper";
 import { useRouter } from "next/navigation";
 
-
 export default function SignUp() {
   const router = useRouter();
   const handleLogin = () => {

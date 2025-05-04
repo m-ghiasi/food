@@ -1,6 +1,5 @@
-
-
-import OnBoarding from "../../components/onBoarding";
+import OnBoarding from "../../components/Onbarding";
 
 export default function Page() {
-  return <OnBoarding />;}
+  return <OnBoarding />;
+}

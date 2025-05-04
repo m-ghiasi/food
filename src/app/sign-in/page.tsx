@@ -27,7 +27,6 @@ export default function Page() {
     "login" | "forgetPass" | "signUp" | "verification"
   >("login");
 
-
   const handleback = () => {
     if (loginStep === "forgetPass" || loginStep === "signUp") {
       setLoginStep("login");
@@ -35,8 +34,6 @@ export default function Page() {
       setLoginStep("forgetPass");
     }
   };
-  
-
 
   return (
     <div className="flex flex-col  w-96 h-screen rounded-4xl  bg-[#121223] reletive">
