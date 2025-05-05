@@ -26,7 +26,7 @@ export default function AppEntry() {
 
   useEffect(() => {
     if(step === "login") {
-      router.push("/authentication")
+      router.push("/sign-in")
     }
   },[step, router])
 

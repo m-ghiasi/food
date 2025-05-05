@@ -32,6 +32,7 @@ export default function Input(pro: inputType) {
         placeholder={placeholder}
         id={id}
         type={isPassword && showPass ? "text" : type}
+        required
       />
 
       {isPassword && (

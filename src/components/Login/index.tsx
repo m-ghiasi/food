@@ -2,6 +2,8 @@ import Input from "../Input";
 import Button from "../Button";
 import { useRouter } from "next/navigation";
 import Wrapper from "../Wrapper";
+import EmailInput from "../../components/EmailInput";
+import { useState } from "react";
 
 type LoginProps = {
   setLoginStep: React.Dispatch<
@@ -14,9 +16,16 @@ export default function Login({ setLoginStep }: LoginProps) {
   const handleLogin = () => {
     router.push("/homePage");
   };
+  const [email, setEmail] = useState<string>("");
+  const [emailValid, setEmailValid] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!emailValid) {
+      alert("invalid email");
+      return;
+    }
     handleLogin();
   };
   return (
@@ -25,14 +34,11 @@ export default function Login({ setLoginStep }: LoginProps) {
         onSubmit={handleSubmit}
         className="flex flex-col gap-6 items-center"
       >
-        <Input
-          id="email"
-          lable="EMAIL"
-          type="text"
-          placeholder="example@gmail.com"
-          wrapperClassName="flex-col "
-          inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
-          lableClassName="mb-2"
+        <EmailInput
+          onValidChange={(email, isValid) => {
+            setEmail(email);
+            setEmailValid(isValid);
+          }}
         />
         <Input
           id="password"

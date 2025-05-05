@@ -2,8 +2,8 @@
 
 import Login from "@/components/Login";
 import Image from "next/image";
-import BackImage from "../../../public/Vector 142.svg";
-import Eli from "../../../public/Ellipse 100.svg";
+import BackImage from "../../../public/svg/Vector 142.svg";
+import Eli from "../../../public/svg/Ellipse 100.svg";
 import { useState } from "react";
 import ForgetPass from "@/components/ForgetPass";
 import SignUp from "@/components/SignUp";
