@@ -8,24 +8,21 @@ import { useState } from "react";
 export default function SignUp() {
   const router = useRouter();
   const handleLogin = () => {
-    router.push("/login");
+    router.push("/home-page");
   };
   const [email, setEmail] = useState<string>("");
   const [emailValid, setEmailValid] = useState<boolean>(false);
 
-  const [password, setPassword]= useState("")
-  const [rePassword, setRePassword]= useState("")
-  const [errorPass, setErrorPass]=useState("")
+  const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
+  const [errorPass, setErrorPass] = useState("");
 
-const handleChangePass = (e:React.ChangeEvent<HTMLInputElement>)=>{
-  setPassword(e.target.value)
-
-}
-const handleChangeRePass = (e:React.ChangeEvent<HTMLInputElement>)=>{
-  setRePassword(e.target.value)
-
-}
-
+  const handleChangePass = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+  const handleChangeRePass = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRePassword(e.target.value);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,10 +30,11 @@ const handleChangeRePass = (e:React.ChangeEvent<HTMLInputElement>)=>{
       alert("invalid email");
       return;
     }
-    if(password !==rePassword){
-      setErrorPass("passwords are not same ")
-    } else{
-      setErrorPass("")
+    if (password !== rePassword) {
+      setErrorPass("passwords are not same ");
+    return
+    } else {
+      setErrorPass("");
     }
 
     handleLogin();
@@ -45,7 +43,7 @@ const handleChangeRePass = (e:React.ChangeEvent<HTMLInputElement>)=>{
     <Wrapper>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-6 items-center"
+        className="flex flex-col gap-4 items-center"
       >
         <Input
           id="name"
@@ -85,11 +83,10 @@ const handleChangeRePass = (e:React.ChangeEvent<HTMLInputElement>)=>{
           lableClassName="mb-2"
           onChange={handleChangeRePass}
         />
-        {errorPass ? ( <p className="text-red-500 text-sm">{errorPass}</p>): null}
+        {errorPass ? <p className="text-red-500 text-sm">{errorPass}</p> : null}
 
         <Button
           type="submit"
-          onClick={handleLogin}
           label={"SIGN UP"}
           className=" text-white font-bold bg-[#FF7622] w-[327px]"
         />

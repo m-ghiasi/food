@@ -56,7 +56,7 @@ export default function Page() {
           alt=""
         ></Image>
       </div>
-      <div className=" flex flex-col items-center mt-45 mb-12">
+      <div className=" flex flex-col items-center mt-40 mb-12">
         <h2 className="text-white font-bold text-3xl">
           {pageTitle[loginStep]}
         </h2>
