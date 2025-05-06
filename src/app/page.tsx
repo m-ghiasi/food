@@ -33,5 +33,6 @@ export default function AppEntry() {
   if (step === "splash") return <SplashScreen />;
   if (step === "onBoarding") return <OnBoarding />;
   
+  
   return null;
 }

@@ -4,11 +4,12 @@ import Login from "@/components/Login";
 import Image from "next/image";
 import BackImage from "../../../public/svg/Vector 142.svg";
 import Eli from "../../../public/svg/Ellipse 100.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ForgetPass from "@/components/ForgetPass";
 import SignUp from "@/components/SignUp";
 import Veriifiction from "@/components/Verification";
 import BackItem from "@/components/ArrBtn";
+import { useRouter } from "next/navigation";
 type pageTitlTeype = {
   login: string;
   forgetPass: string;
@@ -22,6 +23,7 @@ export default function Page() {
     verification: "Verification",
     signUp: "Sign Up",
   };
+  const router = useRouter();
 
   const [loginStep, setLoginStep] = useState<
     "login" | "forgetPass" | "signUp" | "verification"
@@ -34,10 +36,18 @@ export default function Page() {
       setLoginStep("forgetPass");
     }
   };
+  useEffect(()=>{
+      const localStorageEmail:string |null= localStorage.getItem("email")
+      const localStoragePass :string |null= localStorage.getItem("password")
+  
+      if(localStorageEmail && localStoragePass) {
+        router.push("/home-page")
+      }
+    },[])
 
   return (
     <div className="flex flex-col  w-96 h-screen rounded-4xl  bg-[#121223] reletive">
-      
+
       {loginStep !== "login" && (
         <BackItem
           className="z-20 absolute top-15 left-10 md:left-[39%]

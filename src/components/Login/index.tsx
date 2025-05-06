@@ -1,9 +1,11 @@
+
+"use client"
 import Input from "../Input";
 import Button from "../Button";
 import { useRouter } from "next/navigation";
 import Wrapper from "../Wrapper";
 import EmailInput from "../../components/EmailInput";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuthStore } from "../../store";
 
 type LoginProps = {
@@ -35,14 +37,7 @@ export default function Login({ setLoginStep }: LoginProps) {
   };
 
 
-  useEffect(()=>{
-    const localStorageEmail:string |null= localStorage.getItem("email")
-    const localStoragePass :string |null= localStorage.getItem("password")
-
-    if(localStorageEmail && localStoragePass) {
-      router.push("/home-page")
-    }
-  },[])
+ 
 
 
   return (
