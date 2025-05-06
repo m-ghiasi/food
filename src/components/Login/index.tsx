@@ -3,7 +3,8 @@ import Button from "../Button";
 import { useRouter } from "next/navigation";
 import Wrapper from "../Wrapper";
 import EmailInput from "../../components/EmailInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuthStore } from "../../store";
 
 type LoginProps = {
   setLoginStep: React.Dispatch<
@@ -14,11 +15,12 @@ export default function Login({ setLoginStep }: LoginProps) {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.push("/homePage");
+    router.push("/home-page");
   };
-  const [email, setEmail] = useState<string>("");
+
   const [emailValid, setEmailValid] = useState<boolean>(false);
 
+  const { email, setEmail, password, setPassword } = useAuthStore();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -26,8 +28,23 @@ export default function Login({ setLoginStep }: LoginProps) {
       alert("invalid email");
       return;
     }
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+
     handleLogin();
   };
+
+
+  useEffect(()=>{
+    const localStorageEmail:string |null= localStorage.getItem("email")
+    const localStoragePass :string |null= localStorage.getItem("password")
+
+    if(localStorageEmail && localStoragePass) {
+      router.push("/home-page")
+    }
+  },[])
+
+
   return (
     <Wrapper>
       <form

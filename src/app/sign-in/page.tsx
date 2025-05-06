@@ -37,9 +37,10 @@ export default function Page() {
 
   return (
     <div className="flex flex-col  w-96 h-screen rounded-4xl  bg-[#121223] reletive">
+      
       {loginStep !== "login" && (
         <BackItem
-          className="z-10 absolute top-15 left-10 
+          className="z-20 absolute top-15 left-10 md:left-[39%]
          "
           onClick={handleback}
         />

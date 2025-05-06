@@ -4,16 +4,19 @@ import Wrapper from "../Wrapper";
 import { useRouter } from "next/navigation";
 import EmailInput from "../EmailInput";
 import { useState } from "react";
+import { useAuthStore } from "@/store";
 
 export default function SignUp() {
   const router = useRouter();
   const handleLogin = () => {
     router.push("/home-page");
   };
-  const [email, setEmail] = useState<string>("");
+  const {email,setEmail, password, setPassword}=useAuthStore()
+
+  
   const [emailValid, setEmailValid] = useState<boolean>(false);
 
-  const [password, setPassword] = useState("");
+  
   const [rePassword, setRePassword] = useState("");
   const [errorPass, setErrorPass] = useState("");
 
