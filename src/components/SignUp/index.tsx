@@ -2,15 +2,43 @@ import Input from "../Input";
 import Button from "../Button";
 import Wrapper from "../Wrapper";
 import { useRouter } from "next/navigation";
+import EmailInput from "../EmailInput";
+import { useState } from "react";
 
 export default function SignUp() {
   const router = useRouter();
   const handleLogin = () => {
     router.push("/login");
   };
+  const [email, setEmail] = useState<string>("");
+  const [emailValid, setEmailValid] = useState<boolean>(false);
+
+  const [password, setPassword]= useState("")
+  const [rePassword, setRePassword]= useState("")
+  const [errorPass, setErrorPass]=useState("")
+
+const handleChangePass = (e:React.ChangeEvent<HTMLInputElement>)=>{
+  setPassword(e.target.value)
+
+}
+const handleChangeRePass = (e:React.ChangeEvent<HTMLInputElement>)=>{
+  setRePassword(e.target.value)
+
+}
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!emailValid) {
+      alert("invalid email");
+      return;
+    }
+    if(password !==rePassword){
+      setErrorPass("passwords are not same ")
+    } else{
+      setErrorPass("")
+    }
+
     handleLogin();
   };
   return (
@@ -28,14 +56,16 @@ export default function SignUp() {
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
         />
-        <Input
-          id="email"
-          lable="EMAIL"
-          type="text"
-          placeholder="example@gmail.com"
-          wrapperClassName="flex-col "
-          inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
+        <EmailInput
+          inputClassName="w-80 h-16 placeholder:text-[#A0A5BA]"
+          id={email}
+          label="Email"
           lableClassName="mb-2"
+          wrapperClassName="flex-col"
+          onValidChange={(email, isValid) => {
+            setEmail(email);
+            setEmailValid(isValid);
+          }}
         />
         <Input
           id="password"
@@ -44,6 +74,7 @@ export default function SignUp() {
           wrapperClassName=" flex-col"
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
+          onChange={handleChangePass}
         />
         <Input
           id="repassword"
@@ -52,7 +83,9 @@ export default function SignUp() {
           wrapperClassName=" flex-col"
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
+          onChange={handleChangeRePass}
         />
+        {errorPass ? ( <p className="text-red-500 text-sm">{errorPass}</p>): null}
 
         <Button
           type="submit"

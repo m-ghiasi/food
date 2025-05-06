@@ -8,6 +8,9 @@ type inputType = {
   inputClassName?: string;
   lableClassName?: string;
   placeholder?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?:string;
+  
 };
 export default function Input(pro: inputType) {
   const {
@@ -18,6 +21,8 @@ export default function Input(pro: inputType) {
     inputClassName,
     placeholder,
     lableClassName,
+    onChange,
+    value
   } = pro;
 
   const [showPass, setShowPass] = useState<boolean>(false);
@@ -33,6 +38,8 @@ export default function Input(pro: inputType) {
         id={id}
         type={isPassword && showPass ? "text" : type}
         required
+        onChange={onChange}
+        value={value}
       />
 
       {isPassword && (
