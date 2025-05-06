@@ -35,6 +35,11 @@ export default function Login({ setLoginStep }: LoginProps) {
         className="flex flex-col gap-6 items-center"
       >
         <EmailInput
+          inputClassName="w-80 h-16 placeholder:text-[#A0A5BA]"
+          id={email}
+          label="Email"
+          lableClassName="mb-2"
+          wrapperClassName="flex-col"
           onValidChange={(email, isValid) => {
             setEmail(email);
             setEmailValid(isValid);
