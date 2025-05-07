@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 import Input from "../Input";
 import Button from "../Button";
 import { useRouter } from "next/navigation";
@@ -35,10 +34,6 @@ export default function Login({ setLoginStep }: LoginProps) {
 
     handleLogin();
   };
-
-
- 
-
 
   return (
     <Wrapper>
