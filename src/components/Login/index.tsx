@@ -1,12 +1,12 @@
-
-"use client"
+"use client";
 import Input from "../Input";
 import Button from "../Button";
 import { useRouter } from "next/navigation";
 import Wrapper from "../Wrapper";
 import EmailInput from "../../components/EmailInput";
-import { useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useAuthStore } from "../../store";
+
 
 type LoginProps = {
   setLoginStep: React.Dispatch<
@@ -22,6 +22,9 @@ export default function Login({ setLoginStep }: LoginProps) {
 
   const [emailValid, setEmailValid] = useState<boolean>(false);
 
+  const [rememberPass, setRememberPass] = useState<boolean>(false);
+  const [isLoading, setIsLoading]= useState<boolean>(true)
+
   const { email, setEmail, password, setPassword } = useAuthStore();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,14 +34,40 @@ export default function Login({ setLoginStep }: LoginProps) {
       return;
     }
     localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
+    localStorage.setItem("isLoginEd", "true");
+    if (rememberPass) {
+      localStorage.setItem("password", password);
+    }
 
     handleLogin();
   };
+  useEffect(() => {
+    const isLoginEd = localStorage.getItem("isLoginEd");
 
+    if (isLoginEd === "true") {
+      router.push("/home-page");
+    }else{
+      setIsLoading(false)
+    }
+  }, []);
+  const localStoragePass: string | null = localStorage.getItem("password");
+  const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
+    const isChecked = e.target.checked;
 
- 
+    setRememberPass(isChecked);
 
+    if (isChecked && localStoragePass) {
+      setPassword(localStoragePass);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center  h-screen">
+        <p className="text-2xl font-bold text-white">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <Wrapper>
@@ -63,7 +92,7 @@ export default function Login({ setLoginStep }: LoginProps) {
           placeholder="your password"
           type="password"
           wrapperClassName=" flex-col"
-          inputClassName={`w-80 h-16 placeholder:text-[#A0A5BA] `}
+          inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
         />
         <div className="flex w-full justify-evenly items-center ">
@@ -74,6 +103,7 @@ export default function Login({ setLoginStep }: LoginProps) {
             wrapperClassName="flex gap-3 flex-row "
             inputClassName="w-5 h-5 order-1 border border-[#E3EBF2] border-3 "
             lableClassName="order-2 text-[#646982]"
+            onChange={handleCheck}
           />
           <Button
             type="button"

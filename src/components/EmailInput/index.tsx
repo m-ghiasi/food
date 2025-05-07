@@ -7,7 +7,7 @@ type EmailInputType = {
   wrapperClassName: string;
   inputClassName: string;
 };
-
+import { useAuthStore } from "@/store";
 import { ChangeEvent, useState } from "react";
 
 export default function EmailInput(prop: EmailInputType) {
@@ -19,9 +19,9 @@ export default function EmailInput(prop: EmailInputType) {
     wrapperClassName,
     inputClassName,
   } = prop;
-  const [email, setEmail] = useState<string>("");
+  
   const [error, setError] = useState<string>("");
-
+const {email , setEmail}= useAuthStore()
   const validateEmail = (email: string): boolean => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);

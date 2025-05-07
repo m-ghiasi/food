@@ -36,14 +36,7 @@ export default function Page() {
       setLoginStep("forgetPass");
     }
   };
-  useEffect(()=>{
-      const localStorageEmail:string |null= localStorage.getItem("email")
-      const localStoragePass :string |null= localStorage.getItem("password")
-  
-      if(localStorageEmail && localStoragePass) {
-        router.push("/home-page")
-      }
-    },[])
+
 
   return (
     <div className="flex flex-col  w-96 h-screen rounded-4xl  bg-[#121223] reletive">
