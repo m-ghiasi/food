@@ -44,6 +44,7 @@ export default function Login({ setLoginStep }: LoginProps) {
   useEffect(() => {
     const isLoginEd = localStorage.getItem("isLoginEd");
 
+
     if (isLoginEd === "true") {
       router.push("/home-page");
     }else{
@@ -68,6 +69,7 @@ export default function Login({ setLoginStep }: LoginProps) {
       </div>
     );
   }
+
 
   return (
     <Wrapper>

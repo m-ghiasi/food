@@ -1,12 +1,28 @@
+"use client"
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "../Button";
 import Input from "../Input";
 import Wrapper from "../Wrapper";
 
-export default function Veriifiction() {
+export default function Verification() {
   const router = useRouter();
-  const handelVeriify = () => {
-    router.push("/homePage");
+  const [code, setCode] = useState(["", "", "", ""]);
+
+  const handleChange = (index: number, value: string) => {
+    if (!/^\d?$/.test(value)) return; // فقط عدد تک‌رقمی
+    const newCode = [...code];
+    newCode[index] = value;
+    setCode(newCode);
+  };
+
+  const handleVerify = () => {
+    const fullCode = code.join("");
+    if (fullCode.length === 4) {
+      router.push("/homePage");
+    } else {
+      alert("Please enter the full code");
+    }
   };
 
   return (
@@ -18,29 +34,23 @@ export default function Veriifiction() {
           <span>in.50sec</span>
         </div>
       </div>
-      <div className="flex w-full justify-evenly">
-        <Input
-          type="number"
-          inputClassName="w-[62px] h-[62px] appearance-none"
-        />
-        <Input
-          type="number"
-          inputClassName="w-[62px] h-[62px] appearance-none"
-        />
-        <Input
-          type="number"
-          inputClassName="w-[62px] h-[62px] appearance-none"
-        />
-        <Input
-          type="number"
-          inputClassName="w-[62px] h-[62px] appearance-none"
-        />
+      <div className="flex w-full justify-evenly my-4">
+        {code.map((digit, idx) => (
+          <Input
+            key={idx}
+            type="text"
+            // maxLength={1}
+            value={digit}
+            onChange={(e) => handleChange(idx, e.target.value)}
+            inputClassName="w-[62px] h-[62px] text-center text-xl"
+          />
+        ))}
       </div>
       <Button
-        className=" text-white font-bold bg-[#FF7622] w-[327px]"
+        className="text-white font-bold bg-[#FF7622] w-[327px]"
         label={"VERIFY"}
-        onClick={handelVeriify}
-      ></Button>
+        onClick={handleVerify}
+      />
     </Wrapper>
   );
 }
