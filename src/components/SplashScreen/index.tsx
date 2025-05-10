@@ -18,7 +18,7 @@ export default function SplashScreen() {
     };
   }, []);
   return (
-    <div>
+    <div className="overflow-x-hidden max-w-[390px] ">
       <Image
         className={`${
           isActive ? "translate-x-0" : "translate-x-[-250px]"
@@ -33,7 +33,7 @@ export default function SplashScreen() {
 
       <Image
         className={`${
-          isActive ? "translate-x-0 " : "  translate-x-[-650px]"
+          isActive ? "translate-x-0 " : "  translate-x-[400px]"
         } w-64 h-64 absolute  bottom-0 right-0 transform transition-transform duration-300 `}
         src={Elipse}
         alt="desige first page of mayafood app"

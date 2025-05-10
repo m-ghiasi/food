@@ -6,6 +6,8 @@ type EmailInputType = {
   lableClassName: string;
   wrapperClassName: string;
   inputClassName: string;
+  required?: boolean;
+
 };
 import { useAuthStore } from "@/store";
 import { ChangeEvent, useState } from "react";
@@ -18,6 +20,7 @@ export default function EmailInput(prop: EmailInputType) {
     lableClassName,
     wrapperClassName,
     inputClassName,
+    required
   } = prop;
   
   const [error, setError] = useState<string>("");
@@ -52,6 +55,9 @@ const {email , setEmail}= useAuthStore()
         onChange={handleChange}
         placeholder="maya@gmail.com"
         value={email}
+        aria-required={required}
+        
+        
       />
       {error && <p className="text-red-500 text-sm my-2">{error}</p>}
     </div>

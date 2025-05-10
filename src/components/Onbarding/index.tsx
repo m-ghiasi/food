@@ -58,6 +58,10 @@ export default function OnBoarding() {
     },
     trackMouse: true,
   });
+  const handleSkip = ()=>{
+    router.push("/sign-in");
+
+  }
 
   return (
     <div
@@ -104,6 +108,7 @@ export default function OnBoarding() {
             <Button
               label="Skip"
               className={clsx("text-gray-600 bg-white block w-[327px]")}
+              onClick={handleSkip}
             />
           </div>
         )}

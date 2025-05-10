@@ -16,7 +16,7 @@ export default function LocationMap() {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.push("/authentication");
+    router.push("/sign-in");
   };
 
   const showLocation = () => {

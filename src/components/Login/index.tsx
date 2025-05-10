@@ -79,6 +79,7 @@ export default function Login({ setLoginStep }: LoginProps) {
       >
         <EmailInput
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA]"
+          required
           id={email}
           label="Email"
           lableClassName="mb-2"
@@ -96,6 +97,8 @@ export default function Login({ setLoginStep }: LoginProps) {
           wrapperClassName=" flex-col"
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
+          requierd
+          
         />
         <div className="flex w-full justify-evenly items-center ">
           <Input
@@ -106,6 +109,7 @@ export default function Login({ setLoginStep }: LoginProps) {
             inputClassName="w-5 h-5 order-1 border border-[#E3EBF2] border-3 "
             lableClassName="order-2 text-[#646982]"
             onChange={handleCheck}
+            requierd
           />
           <Button
             type="button"

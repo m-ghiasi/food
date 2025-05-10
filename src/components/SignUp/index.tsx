@@ -56,6 +56,7 @@ export default function SignUp() {
           wrapperClassName="flex-col "
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
+        
         />
         <EmailInput
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA]"
