@@ -18,6 +18,7 @@ export default function ForgetPass({ setLoginStep }: LoginProps) {
         wrapperClassName="flex-col "
         inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
         lableClassName="mb-2"
+        requierd
       />
 
       <Button

@@ -60,6 +60,7 @@ export default function SignUp() {
         />
         <EmailInput
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA]"
+          required
           id={email}
           label="Email"
           lableClassName="mb-2"
@@ -77,6 +78,7 @@ export default function SignUp() {
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
           onChange={handleChangePass}
+          requierd
         />
         <Input
           id="repassword"
@@ -86,6 +88,7 @@ export default function SignUp() {
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
           onChange={handleChangeRePass}
+          requierd
         />
         {errorPass ? <p className="text-red-500 text-sm">{errorPass}</p> : null}
 
