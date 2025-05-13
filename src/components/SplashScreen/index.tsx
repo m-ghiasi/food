@@ -18,7 +18,7 @@ export default function SplashScreen() {
     };
   }, []);
   return (
-    <div className="overflow-x-hidden max-w-[390px] ">
+    <div className=" overflow-x-hidden max-w-[390px] h-screen relative ">
       <Image
         className={`${
           isActive ? "translate-x-0" : "translate-x-[-250px]"

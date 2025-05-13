@@ -65,7 +65,7 @@ export default function OnBoarding() {
 
   return (
     <div
-      className=" h-screen flex flex-col justify-center items-center p-5"
+      className=" h-screen flex flex-col justify-center items-center p-5 over"
       {...handlers}
     >
       {/* content */}
