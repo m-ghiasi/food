@@ -37,6 +37,7 @@ export default function Login({ setLoginStep }: LoginProps) {
       alert("full all fields");
       return;
     }
+    
     localStorage.setItem("email", email);
     localStorage.setItem("isLoginEd", "true");
     if (rememberPass) {
@@ -98,6 +99,7 @@ export default function Login({ setLoginStep }: LoginProps) {
           wrapperClassName=" flex-col"
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
+          onChange={(e)=>setPassword(e.target.value)}
         />
         <div className="flex w-full justify-evenly items-center ">
           <Input

@@ -39,7 +39,6 @@ export default function Verification() {
           <Input
             key={idx}
             type="text"
-            // maxLength={1}
             value={digit}
             onChange={(e) => handleChange(idx, e.target.value)}
             inputClassName="w-[62px] h-[62px] text-center text-xl"

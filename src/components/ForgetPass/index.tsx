@@ -1,7 +1,8 @@
-import { useAuthStore } from "@/store";
+
 import Button from "../Button";
 import Input from "../Input";
 import Wrapper from "../Wrapper";
+import { useState } from "react";
 type LoginProps = {
   setLoginStep: React.Dispatch<
     React.SetStateAction<"login" | "forgetPass" | "signUp" | "verification">
@@ -9,13 +10,20 @@ type LoginProps = {
 };
 
 export default function ForgetPass({ setLoginStep }: LoginProps) {
-  const { email, setEmail } = useAuthStore();
+  
+  const [enterEmail, setEnterEmail]= useState("")
   const handleClick = () => {
-    if (!email) {
+    if (!enterEmail) {
       alert("fill out email");
       return;
     }
-    setLoginStep("verification");
+    const localEmail = localStorage.getItem("email")
+    if(enterEmail === localEmail){
+       setLoginStep("verification");
+    }else{
+      alert("email is not correct")
+    }
+   
   };
   return (
     <Wrapper>
@@ -27,7 +35,7 @@ export default function ForgetPass({ setLoginStep }: LoginProps) {
         wrapperClassName="flex-col "
         inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
         lableClassName="mb-2"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setEnterEmail(e.target.value)}
       />
 
       <Button
