@@ -18,7 +18,9 @@ export default function ForgetPass({ setLoginStep }: LoginProps) {
       return;
     }
     const localEmail = localStorage.getItem("email")
-    if(enterEmail === localEmail){
+    if(enterEmail === localEmail|| localEmail === null){
+
+      // second if is just  to test 
        setLoginStep("verification");
     }else{
       alert("email is not correct")

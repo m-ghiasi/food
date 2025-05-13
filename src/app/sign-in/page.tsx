@@ -43,7 +43,7 @@ export default function Page() {
 
       {loginStep !== "login" && (
         <BackItem
-          className="z-20 absolute top-15 left-10 md:left-[39%]
+          className="z-20 absolute top-16 left-10 md:left-[39%]
          "
           onClick={handleback}
         />

@@ -35,7 +35,7 @@ export default function Input(pro: inputType) {
         {lable}
       </label>
       <input
-        className={`${inputClassName} flex items-center pr-12  rounded-2xl bg-[#F0F5FA] px-5 `}
+        className={`${inputClassName}  rounded-2xl bg-[#F0F5FA] px-5 `}
         placeholder={placeholder}
         id={id}
         type={isPassword && showPass ? "text" : type}
