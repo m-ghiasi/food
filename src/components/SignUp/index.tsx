@@ -11,21 +11,13 @@ export default function SignUp() {
   const handleLogin = () => {
     router.push("/home-page");
   };
-  const {email,setEmail, password, setPassword}=useAuthStore()
+  const { email, setEmail, password, setPassword } = useAuthStore();
+  const [name, setName] = useState("");
 
-  
   const [emailValid, setEmailValid] = useState<boolean>(false);
 
-  
   const [rePassword, setRePassword] = useState("");
   const [errorPass, setErrorPass] = useState("");
-
-  const handleChangePass = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-  const handleChangeRePass = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRePassword(e.target.value);
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,9 +25,13 @@ export default function SignUp() {
       alert("invalid email");
       return;
     }
+    if (!email || !password || !rePassword || !name) {
+      alert("full all fields");
+      return;
+    }
     if (password !== rePassword) {
       setErrorPass("passwords are not same ");
-    return
+      return;
     } else {
       setErrorPass("");
     }
@@ -56,7 +52,7 @@ export default function SignUp() {
           wrapperClassName="flex-col "
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
-        
+          onChange={(e) => setName(e.target.value)}
         />
         <EmailInput
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA]"
@@ -77,8 +73,8 @@ export default function SignUp() {
           wrapperClassName=" flex-col"
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
-          onChange={handleChangePass}
-          requierd
+          onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <Input
           id="repassword"
@@ -87,8 +83,8 @@ export default function SignUp() {
           wrapperClassName=" flex-col"
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
-          onChange={handleChangeRePass}
-          requierd
+          onChange={(e) => setRePassword(e.target.value)}
+          required
         />
         {errorPass ? <p className="text-red-500 text-sm">{errorPass}</p> : null}
 

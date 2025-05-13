@@ -7,7 +7,6 @@ import EmailInput from "../../components/EmailInput";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useAuthStore } from "../../store";
 
-
 type LoginProps = {
   setLoginStep: React.Dispatch<
     React.SetStateAction<"login" | "forgetPass" | "signUp" | "verification">
@@ -23,7 +22,7 @@ export default function Login({ setLoginStep }: LoginProps) {
   const [emailValid, setEmailValid] = useState<boolean>(false);
 
   const [rememberPass, setRememberPass] = useState<boolean>(false);
-  const [isLoading, setIsLoading]= useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const { email, setEmail, password, setPassword } = useAuthStore();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,6 +30,11 @@ export default function Login({ setLoginStep }: LoginProps) {
 
     if (!emailValid) {
       alert("invalid email");
+      return;
+    }
+
+    if (!email || !password) {
+      alert("full all fields");
       return;
     }
     localStorage.setItem("email", email);
@@ -44,11 +48,10 @@ export default function Login({ setLoginStep }: LoginProps) {
   useEffect(() => {
     const isLoginEd = localStorage.getItem("isLoginEd");
 
-
     if (isLoginEd === "true") {
       router.push("/home-page");
-    }else{
-      setIsLoading(false)
+    } else {
+      setIsLoading(false);
     }
   }, []);
   const localStoragePass: string | null = localStorage.getItem("password");
@@ -70,7 +73,6 @@ export default function Login({ setLoginStep }: LoginProps) {
     );
   }
 
-
   return (
     <Wrapper>
       <form
@@ -79,7 +81,6 @@ export default function Login({ setLoginStep }: LoginProps) {
       >
         <EmailInput
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA]"
-          required
           id={email}
           label="Email"
           lableClassName="mb-2"
@@ -97,8 +98,6 @@ export default function Login({ setLoginStep }: LoginProps) {
           wrapperClassName=" flex-col"
           inputClassName="w-80 h-16 placeholder:text-[#A0A5BA] "
           lableClassName="mb-2"
-          requierd
-          
         />
         <div className="flex w-full justify-evenly items-center ">
           <Input
@@ -109,7 +108,6 @@ export default function Login({ setLoginStep }: LoginProps) {
             inputClassName="w-5 h-5 order-1 border border-[#E3EBF2] border-3 "
             lableClassName="order-2 text-[#646982]"
             onChange={handleCheck}
-            requierd
           />
           <Button
             type="button"
@@ -124,7 +122,6 @@ export default function Login({ setLoginStep }: LoginProps) {
           type="submit"
           label={"LOG IN"}
           className=" text-white font-bold bg-[#FF7622] w-[327px]"
-          onClick={handleLogin}
         />
         <div className=" flex flex-row gap-3 justify-between items-center">
           <p className=" text-[#646982]">Don’t have an account?</p>

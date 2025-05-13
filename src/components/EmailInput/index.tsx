@@ -55,7 +55,7 @@ const {email , setEmail}= useAuthStore()
         onChange={handleChange}
         placeholder="maya@gmail.com"
         value={email}
-        aria-required={required}
+        
         
         
       />
