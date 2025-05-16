@@ -1,5 +1,10 @@
 "use client";
 
 export default function Page() {
-  return <div>Home page</div>;
+  return <div>
+    <p>Home page</p> 
+    {/* search */}
+    {/* categories */}
+    {/* foods */}
+    </div>;
 }
