@@ -19,7 +19,7 @@ export default function Verification() {
   const handleVerify = () => {
     const fullCode = code.join("");
     if (fullCode.length === 4) {
-      router.push("/homePage");
+      router.push("/home-page");
     } else {
       alert("Please enter the full code");
     }
