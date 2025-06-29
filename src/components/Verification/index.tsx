@@ -38,7 +38,7 @@ export default function Verification() {
         {code.map((digit, idx) => (
           <Input
             key={idx}
-            type="text"
+            type="number"
             value={digit}
             onChange={(e) => handleChange(idx, e.target.value)}
             inputClassName="w-[62px] h-[62px] text-center text-xl"
