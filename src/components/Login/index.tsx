@@ -16,7 +16,7 @@ export default function Login({ setLoginStep }: LoginProps) {
   const router = useRouter();
 
   const handleLogin = () => {
-    router.push("/home-page");
+    // router.push("/home-page");
   };
 
   const [emailValid, setEmailValid] = useState<boolean>(false);

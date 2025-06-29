@@ -10,7 +10,8 @@ type inputType = {
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?:string;
-  required ?:boolean
+  required ?:boolean;
+  ref?:React.RefObject<HTMLInputElement>;
   
 };
 export default function Input(pro: inputType) {
@@ -24,7 +25,8 @@ export default function Input(pro: inputType) {
     lableClassName,
     onChange,
     value,
-    required
+    required,
+    ref
   } = pro;
 
   const [showPass, setShowPass] = useState<boolean>(false);
@@ -36,6 +38,7 @@ export default function Input(pro: inputType) {
       </label>
       <input
         className={`${inputClassName}  rounded-2xl bg-[#F0F5FA] px-5 `}
+        ref={ref}
         placeholder={placeholder}
         id={id}
         type={isPassword && showPass ? "text" : type}
